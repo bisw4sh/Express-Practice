@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="./images/doge.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/stylesheets/styles.css">
+  <script defer src="/script/app.js"></script>
+  <title><%=name%></title>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="left">
+      <a href="/"> <%= name%> </a>
+    </div>
+
+    <div class="right">
+
+      <a class="toggler">
+        <i class="fa-solid fa-toggle-off" id="toggleOff"></i>
+        <i class="fa-solid fa-toggle-on" id="toggleOn" style="display: none;"></i>
+      </a>
+
+      <a href="https://github.com/bisw4sh" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-github"></i>
+        <span>Github</span>
+      </a>
+      
+      <a href="https://www.linkedin.com/in/biswash-dhungana-8b313b244/" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-linkedin"></i>
+        <span>Linkedin</span>
+      </a>
+      
+      <a href="mailto:spikeystona@gmail.com">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Email</span>
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- SECTION 1: Hero -->
+    <section class="hero-section">
+      <div class="text">
+        <h2>Hi, I'm <%=name%> 👋</h2>
+        <p>Passionate about vanilla JavaScript, React, and Node.js, I'm eager to explore the future of web development. 
+          I'm excited to learn my new technologies stack like Astro, blockchain, Web 3 & Rust. Let's embark on a journey
+           of innovation and push the boundaries of what's possible in the ever-evolving web landscape.</p>
+        <div class="links">
+          <a href="#skills">
+            <i class="fa-solid fa-code"></i>
+            <span>Skills</span>
+          </a>
+          
+          <a href="#contact">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Contact</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="headshot">
+        <img src="https://biswashdhungana.com.np/images/br4ke.png" alt="br4ke headshot">
+      </div>
+    </section>
+
+    <!-- SECTION 2: Skills -->
+    <section id="skills" class="skills-section">
+      <h2>Skills</h2>
+      <div class="text">
+        Combining the elegance of HTML, the creativity of CSS, the interactivity of JavaScript, and the power of Node and React, I craft engaging and dynamic websites that bring ideas to life.
+      </div>
+
+      <div class="cells">
+        <div class="cell">
+          <img src="/images/html-logo.webp" alt="html logo">
+          <span>HTML</span>
+        </div>
+        
+        <div class="cell">
+          <img src="/images/css-logo.webp" alt="css logo">
+          <span>CSS</span>
+        </div>
+        
+        <div class="cell">
+          <img src="/images/javascript-logo.webp" alt="javascript logo">
+          <span>JavaScript</span>
+        </div>
+        
+        <div class="cell">
+          <img src="/images/node-logo.webp" alt="node logo">
+          <span>Node.js</span>
+        </div>
+        
+        <div class="cell">
+          <img src="/images/react-logo.webp" alt="react logo">
+          <span>React.js</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Contact -->
+    <section id="contact" class="contact-section">
+      <h2>Contact</h2>
+
+      <div class="group">
+        <div class="text">
+          Let's collaborate and create something amazing! Contact me to join forces in pushing the boundaries of web development. Together, we can leverage my skills in HTML, CSS, JavaScript, Node, and React, combined with your unique vision, to craft impactful digital experiences. Collaboration is key to personal and professional growth, allowing us to exchange knowledge and challenge ourselves. Let's build remarkable projects and elevate our skills together. Reach out and let's get started!        
+        </div>
+
+        <form id="contactForm">
+          <label for="name">Name</label>
+          <input type="text" id="name">
+    
+          <label for="email">Email</label>
+          <input type="email" id="email">
+    
+          <label for="message">Message</label>
+          <textarea id="message" cols="30" rows="10"></textarea>
+    
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
