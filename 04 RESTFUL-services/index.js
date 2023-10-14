@@ -7,9 +7,6 @@ app.use(express.json());
 //Routes middleware
 app.use('/users', userRoutes);
 
-app.get('/', (req, res) => {
-    res.send("Homepage")
-});
-
+app.get('/', (req, res) => res.send("Homepage"))
 
 app.listen(3000, () => console.log("http://localhost:3000"))

@@ -30,6 +30,12 @@ To get started with this project, follow these steps:
 
 After you've successfully started the application, you can make requests to the available routes. Here are the routes you can interact with:
 
-- `/routes`: Description of what this route does.
+- `GET    http://localhost:3000`: Home page
+- `GET    http://localhost:3000/users`: getallUsers
+- `POST   http://localhost:3000/users`: addUser
+- `GET    http://localhost:3000/users/ids/:id`: getUserById
+- `GET    http://localhost:3000/users/:index`: getUserByIndex
+- `DELETE http://localhost:3000/users/:id`: deleteUser
+- `PATCH  http://localhost:3000/users/:id`: updateUser
 
 You can use tools like [curl](https://curl.se/) or [Postman](https://www.postman.com/) to make HTTP requests to these routes. Make sure to include any required parameters and headers as specified in the project documentation.
