@@ -1,20 +1,9 @@
 import express from 'express';
-import pool from '../db.js';
+import { register, login } from '../controllers/control.js';
 
 const router = express.Router();
 
-router.post('/register', async (req, res) => {
-    try {
-        const {name, email , password} = req.body;
-
-        const userExist = await pool.query( 'SELECT * FROM users WHERE user_email = $1;', [email])
-
-        res.json(userExist.rows);
-        
-    } catch (error) {
-        console.log(error.message);
-    }
-
-})
+router.post('/register', register)
+router.post('/login', login)
 
 export default router;

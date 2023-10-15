@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import 'dotenv/config'
 import auth from "./routes/jwtAuth.js"
 
 const app = express();
@@ -12,4 +13,4 @@ app.get('/', (req, res) => {
     res.send('Welcome')
 })
 
-app.listen(8000, () => console.log('http://localhost:8000'))
+app.listen(process.env.PORT, () => console.log(`http://localhost:${process.env.PORT}`))
