@@ -28,3 +28,18 @@ To get started with this project, follow these steps:
    npm start
     ```
 ## Making Requests
+
+After you've successfully started the application, you can make requests to the available routes. Here are the routes you can interact with:
+
+| Method | URL                                       | Description            |
+|--------|-------------------------------------------|------------------------|
+| POST   | http://localhost:8000/auth/register      | REGISTER USER          |
+| POST   | http://localhost:8000/auth/login         | LOGIN USER             |
+| GET    | http://localhost:8000/auth/verify        | VERIFY JWT             |
+| POST   | http://localhost:8000/dashboard          | ACCESS PRIVATE ROUTE   |
+
+You can use tools like [curl](https://curl.se/) or [Postman](https://www.postman.com/) to make HTTP requests to these routes. Make sure to include any required parameters and headers as specified in the project documentation.
+
+[UI Tutorial](https://www.youtube.com/watch?v=cjqfF5hyZFg)
+
+[Guide Repo](https://www.youtube.com/watch?v=cjqfF5hyZFg)
