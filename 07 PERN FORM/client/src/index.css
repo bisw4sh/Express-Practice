@@ -1,0 +1,107 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: #0c0c1d;
+  color: lightgray;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+body{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form{
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 25rem;
+  padding: 2rem;
+  background-color: rgba(57, 53, 53, 0.379);
+  gap: 1rem;
+
+
+  & h1{
+    align-self: center;
+  }
+
+  >label{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+  }
+
+  .frame-work{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    > *{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  & button{
+    border-radius: 5px;
+    align-self: center;
+    padding: .7rem 2rem;
+    font-size: 20px;
+    background-color: rgba(82, 106, 106, 0.352);
+    border: none;
+  }
+
+}
+
+input{
+  border: none;
+  height: 2rem;
+  border-radius: 5px;
+  padding: .5rem;
+}
+
+select, option{
+  width: 8rem;
+  padding: .5rem 1.5rem;
+}
+
+option{
+  height: 3rem;
+}
+
+.details{
+  border-radius: 10px;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(62, 58, 58, 0.238);
+  padding: 2rem;
+  text-align: center;
+}
