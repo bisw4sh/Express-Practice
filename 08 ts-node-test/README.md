@@ -29,19 +29,20 @@ Uncomment allowJs, outDir, rootDir in tsconfig.json to get the following command
 pnpm tsc
 ```
 
+Convert all .ts to .js & run the index.js
 ```json
 "scripts": {
    "start": "tsc && node dist/server/index.js"
 }
 ```
 
-
-Following is done so that tsx generates the file & index.js is run with pnpm dev
-
+Add **tsx** as dev dep.
 ```bash 
 pnpm add -D tsx
 ```
 
+Add script to run for first class .ts support.
+-> This has the issue of not importing .ts
  ```json
  "scripts": {
      "dev": "pnpm exec tsx server/index.ts",
