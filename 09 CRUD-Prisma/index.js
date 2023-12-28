@@ -83,4 +83,4 @@ app.put("/:id", async (req, res) => {
   }
 });
 
-app.listen(8080, () => console.log(`Listening @ localhost:${8080}`));
+app.listen(8080, () => console.log(`Running @ http://localhost:${8080}`));

@@ -133,3 +133,9 @@ The install command invokes ```prisma generate``` for you which reads your Prism
 <img src='./assets/prisma-client-install-and-generate.png' alt="prisma working" align-item="center" width="70%">
 
 Whenever you update your Prisma schema, you will have to update your database schema using either ```prisma migrate dev``` or ```prisma db push```. This will keep your database schema in sync with your Prisma schema. The commands will also regenerate Prisma Client.
+
+
+Note : To get the project running after cloning
+```sh
+pnpm dlx prisma generate
+```
