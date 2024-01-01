@@ -5,7 +5,13 @@ const router = express.Router();
 router.post("/", (req, res) => {
   console.log(req.cookies);
   console.log(res.session.data);
-  req.session.destroy();
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send("Session is destroyed");
+    }
+  });
   res.cookie.clear;
   res.send(`Cookie has been destroyed`);
 });

@@ -7,6 +7,7 @@ const active_sessions = async (req, res, next) => {
     });
 
     console.log(`Active sessions: ${JSON.stringify(sessions)}`);
+    console.table(sessions);
   } else {
     // Sessions are not enabled or not properly configured
     console.error("Sessions not available.");

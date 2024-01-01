@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
     if (_password === isMatch[0].password) {
       req.session.data = _user;
       res.cookie("data", { user: _user });
-      console.log(req.sessionID);
+      console.log(`Session ID ${req.sessionID}`);
       res.status(200).send(`Logged In, cookies saved`);
     } else {
       res.status(401).send(`Invalid password for ${_user}`);
