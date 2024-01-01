@@ -24,9 +24,15 @@ export default function Navbar() {
             Dashboard
           </NavLink>
         </div>
+        <div>
+
+        <button className="btn">
+          Mode
+        </button>
         <button className="btn">
           <NavLink to='login'>Login | Logout</NavLink>
         </button>
+        </div>
       </nav>
       <Outlet />
     </div>

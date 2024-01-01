@@ -1,5 +1,6 @@
 import express from "express";
 import session from "express-session";
+import cookieParser from "cookie-parser";
 import loginRoute from "./routes/login.js";
 import registerRoute from "./routes/register.js";
 import logoutRoute from "./routes/register.js";
@@ -9,6 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(
@@ -16,7 +18,10 @@ app.use(
     secret: "<secret>",
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: true },
+    cookie: {
+      // secure: true,
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+    },
   })
 );
 
@@ -24,8 +29,8 @@ app.get("/", (req, res) => {
   res.send("It is working");
 });
 
-app.use("/register", registerRoute);
-app.use("/login", active_sessions, loginRoute);
-app.use("/logout", logoutRoute);
+app.use("/api/login", active_sessions, loginRoute);
+app.use("/api/register", registerRoute);
+app.use("/api/logout", logoutRoute);
 
 app.listen(PORT, () => console.log(`Running @ http://localhost:${PORT}`));

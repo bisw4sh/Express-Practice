@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import { useState, ChangeEvent, FormEvent } from "react";
 
 interface FormDataType {
-  email: string;
+  user: string;
   password: string;
 }
 
 export default function Login() {
   const [formData, setFormData] = useState<FormDataType>({
-    email: "",
+    user: "",
     password: "",
   });
 
@@ -16,27 +16,30 @@ export default function Login() {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
+  const submitForm = async () => {
+    const submission = await fetch("api/login", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+    console.log(submission.text());
+  };
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(formData);
-    const submitForm = async () => {
-      const submission = await fetch("/api/login", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-    };
+    submitForm();
     setFormData({
-      email: "",
+      user: "",
       password: "",
     });
   };
 
   return (
-    <div className="bg-white dark:bg-dark py-6 sm:py-8 lg:py-12">
+    <div className="bg-zinc-300 dark:bg-dark py-6 sm:py-8 lg:py-12">
       <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
         <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-8 lg:text-3xl">
           Login
@@ -49,16 +52,16 @@ export default function Login() {
           <div className="flex flex-col gap-4 p-4 md:p-8">
             <div>
               <label
-                htmlFor="email"
+                htmlFor="user"
                 className="mb-2 inline-block text-sm text-gray-800 sm:text-base"
               >
-                Email
+                user
               </label>
               <input
-                type="text" // Added type="email" for email input
-                name="email"
+                type="text" // Added type="user" for user input
+                name="user"
                 className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
-                value={formData.email}
+                value={formData.user}
                 onChange={handleChange}
               />
             </div>
@@ -87,7 +90,7 @@ export default function Login() {
             </button>
           </div>
 
-          <div className="flex items-center justify-center bg-gray-100 p-4">
+          <div className="flex items-center justify-center p-4">
             <p className="text-center text-sm text-gray-500">
               Don't have an account?{" "}
               <Link
