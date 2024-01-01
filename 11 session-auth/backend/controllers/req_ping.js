@@ -1,6 +1,6 @@
 const req_ping = async (req, res, next) => {
-  if (req.cookies.length > 0) {
-    console.log(req.cookie["data"]);
+  if (req.cookies["connect.sid"]) {
+    console.log(req.cookies["connect.sid"]);
   } else {
     console.log(`Has no cookie`);
   }

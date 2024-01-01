@@ -2,7 +2,7 @@ import express from "express";
 
 const router = express.Router();
 
-router.post("/", (req, res) => {
+router.get("/", (req, res) => {
   console.log(req.cookies);
   console.log(res.session.data);
   req.session.destroy((err) => {
