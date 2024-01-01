@@ -2,6 +2,8 @@ import express from "express";
 import session from "express-session";
 import loginRoute from "./routes/login.js";
 import registerRoute from "./routes/register.js";
+import logoutRoute from "./routes/register.js";
+import active_sessions from "./middleware/active_sessions.js";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -22,7 +24,8 @@ app.get("/", (req, res) => {
   res.send("It is working");
 });
 
-app.use("/login", loginRoute);
 app.use("/register", registerRoute);
+app.use("/login", active_sessions, loginRoute);
+app.use("/logout", logoutRoute);
 
 app.listen(PORT, () => console.log(`Running @ http://localhost:${PORT}`));
