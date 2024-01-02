@@ -18,7 +18,7 @@ export default function Login() {
   };
 
   const submitForm = async () => {
-    const submission = await fetch("api/login", {
+    await fetch("api/login", {
       method: "POST",
       credentials: "include",
       headers: {
@@ -26,12 +26,10 @@ export default function Login() {
       },
       body: JSON.stringify(formData),
     });
-    console.log(submission.text());
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
     submitForm();
     setFormData({
       user: "",
@@ -60,7 +58,7 @@ export default function Login() {
                 user
               </label>
               <input
-                type="text" // Added type="user" for user input
+                type="text" 
                 name="user"
                 className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
                 value={formData.user}
@@ -76,7 +74,7 @@ export default function Login() {
                 Password
               </label>
               <input
-                type="password" // Added type="password" for password input
+                type="password"
                 name="password"
                 className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
                 value={formData.password}
@@ -85,7 +83,7 @@ export default function Login() {
             </div>
 
             <button
-              type="submit" // Added type="submit" for the submit button
+              type="submit"
               className="block rounded-lg bg-gray-800 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-gray-300 transition duration-100 hover:bg-gray-700 focus-visible:ring active:bg-gray-600 md:text-base"
             >
               Log in
