@@ -3,19 +3,20 @@ import express from "express";
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  console.log(req.cookies);
-  console.log(res.session.data);
+  console.table(req.cookies);
+  console.log(req.session.data);
+
+  // Destroy the session
   req.session.destroy((err) => {
     if (err) {
       console.log(err);
+      res.status(500).send("Error destroying session");
     } else {
-      res.send("Session is destroyed");
+      // Clear the cookie
+      res.clearCookie("data");
+      res.send("Session and cookie have been destroyed");
     }
   });
-  req.session.cookie.expires = new Date(Date.now());
-  // res.cookie.clear;
-  // res.clearCookie("data");
-  res.send(`Cookie has been destroyed`);
 });
 
 export default router;
