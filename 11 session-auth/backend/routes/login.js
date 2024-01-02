@@ -1,6 +1,5 @@
 import express from "express";
 import users from "../controllers/users.js";
-import req_ping from "../controllers/req_ping.js";
 
 const router = express.Router();
 
@@ -13,17 +12,11 @@ router.post("/", async (req, res) => {
     const isMatch = users.filter(
       ({ user, password }) => user === _user && password === _password
     );
-    console.log(isMatch);
+
     if (_password === isMatch[0].password) {
       req.session.data = _user;
       res.cookie("data", { user: _user });
-      console.log(`Session ID ${req.sessionID}`);
-      //req_ping();
-      if (req.cookies["connect.sid"]) {
-        console.log(req.cookies["connect.sid"]);
-      } else {
-        console.log(`Has no cookie`);
-      }
+
       res.status(200).send(`Logged In, cookies saved`);
     } else {
       res.status(401).send(`Invalid password for ${_user}`);
