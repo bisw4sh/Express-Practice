@@ -1,13 +1,17 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import { userContext, AuthContextType } from "../context/AuthContext";
 import { useContext } from "react";
 
 export default function Navbar() {
   const { user, setUser } = useContext(userContext) as AuthContextType;
+  const navigate = useNavigate()
 
   const handleLogOut = async () => {
-    await fetch("/api/logout");
+    // await fetch("/api/logout", {
+    //   credentials: "include",
+    // });
     setUser("");
+    navigate('/logout')
   };
   return (
     <div className="px-8 py-4">
