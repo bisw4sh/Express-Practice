@@ -12,7 +12,10 @@ export default function AuthContext({
 }: {
   children: React.ReactNode;
 }) {
-  const [user, setUser] = useState<string>("");
+  const fromLocal: string | null = localStorage.getItem("user");
+  const [user, setUser] = useState<string>(
+    typeof fromLocal === "string" ? fromLocal : ""
+  );
   return (
     <userContext.Provider value={{ user, setUser }}>
       {children}
