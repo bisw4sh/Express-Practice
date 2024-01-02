@@ -10,7 +10,7 @@ import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
-import Logout from "./pages/Logout";
+import Logout, { loader as logoutLoader} from "./pages/Logout";
 import Register from "./pages/Register";
 
 const router = createBrowserRouter(
@@ -19,7 +19,7 @@ const router = createBrowserRouter(
       <Route index element={<Homepage />} />
       <Route path="dashboard" element={<Dashboard />} />
       <Route path="login" element={<Login />} />
-      <Route path="logout" element={<Logout />} />
+      <Route path="logout" element={<Logout />} loader={logoutLoader} />
       <Route path="register" element={<Register />} />
     </Route>
   )
