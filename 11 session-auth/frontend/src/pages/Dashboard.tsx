@@ -1,11 +1,11 @@
 import { useContext, useEffect } from "react";
 import { userContext, AuthContextType } from "../context/AuthContext";
 // import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
   const { user, setUser } = useContext(userContext) as AuthContextType;
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     // const cookieUser = Cookies.get("data");
@@ -17,12 +17,20 @@ export default function Dashboard() {
 
     // setUser(extractUsername(cookieUser as string) as string);
     // console.log(user)
-    async () => {
-      const user = await fetch('api/find')
-      console.log(user)
-      setUser('hello')
-    };
-    navigate("/");
+    (async () => {
+      try {
+        const userFetched = await fetch("api/find", {
+          credentials: "include",
+        });
+
+        const userReturned = await userFetched.text();
+        setUser(userReturned);
+        localStorage.setItem("user", userReturned);
+      } catch (error) {
+        console.error("Error fetching user:", error);
+      }
+    })();
+    // navigate("/");
   }, []);
 
   return (
