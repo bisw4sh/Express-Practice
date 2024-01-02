@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, ChangeEvent, FormEvent } from "react";
 
 interface FormDataType {
@@ -7,6 +7,7 @@ interface FormDataType {
 }
 
 export default function Login() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<FormDataType>({
     user: "",
     password: "",
@@ -36,6 +37,7 @@ export default function Login() {
       user: "",
       password: "",
     });
+    navigate("/dashboard");
   };
 
   return (

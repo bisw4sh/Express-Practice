@@ -13,6 +13,7 @@ router.get("/", (req, res) => {
     }
   });
   res.cookie.clear;
+  res.clearCookie("data");
   res.send(`Cookie has been destroyed`);
 });
 

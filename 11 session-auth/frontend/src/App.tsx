@@ -4,6 +4,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import AuthContext from "./context/AuthContext";
 
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
@@ -23,5 +24,9 @@ const router = createBrowserRouter(
 );
 
 export default function App() {
-  return <RouterProvider router={router}></RouterProvider>;
+  return (
+    <AuthContext>
+      <RouterProvider router={router}></RouterProvider>
+    </AuthContext>
+  );
 }

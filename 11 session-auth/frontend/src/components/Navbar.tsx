@@ -1,6 +1,14 @@
 import { Outlet, NavLink } from "react-router-dom";
+import { userContext, AuthContextType } from "../context/AuthContext";
+import { useContext } from "react";
 
 export default function Navbar() {
+  const { user, setUser } = useContext(userContext) as AuthContextType;
+
+  const handleLogOut = async () => {
+    await fetch("/api/logout");
+    setUser("");
+  };
   return (
     <div className="px-8 py-4">
       <nav className="w-full flex justify-between">
@@ -25,13 +33,16 @@ export default function Navbar() {
           </NavLink>
         </div>
         <div>
-
-        <button className="btn">
-          Mode
-        </button>
-        <button className="btn">
-          <NavLink to='login'>Login | Logout</NavLink>
-        </button>
+          <button className="btn capitalize">{user}</button>
+          <button className="btn">
+            {!user ? (
+              <NavLink to="login">Login</NavLink>
+            ) : (
+              <span className="btn" onClick={handleLogOut}>
+                Logout
+              </span>
+            )}
+          </button>
         </div>
       </nav>
       <Outlet />
