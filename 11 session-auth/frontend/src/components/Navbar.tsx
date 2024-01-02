@@ -25,14 +25,14 @@ export default function Navbar() {
           >
             Register
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="/dashboard"
             className="text-teal-400 hover:text-teal-600 hover:scale-105"
           >
             Dashboard
-          </NavLink>
+          </NavLink> */}
         </div>
-        <div>
+        <div className="flex justify-between items-center gap-3">
           <button className="btn capitalize">{user}</button>
           <button className="btn">
             {!user ? (

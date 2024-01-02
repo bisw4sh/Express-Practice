@@ -4,7 +4,8 @@ import cookieParser from "cookie-parser";
 import loginRoute from "./routes/login.js";
 import registerRoute from "./routes/register.js";
 import logoutRoute from "./routes/register.js";
-import active_sessions from "./middleware/active_sessions.js";
+import findUserRoute from "./routes/findUser.js";
+// import active_sessions from "./middleware/active_sessions.js";
 import req_ping from "./controllers/req_ping.js";
 
 const app = express();
@@ -32,8 +33,10 @@ app.get("/", (req, res) => {
   res.send("It is working");
 });
 
-app.use("/api/login", active_sessions, loginRoute);
+// app.use("/api/login", active_sessions, loginRoute);
+app.use("/api/login", loginRoute);
 app.use("/api/register", registerRoute);
 app.use("/api/logout", logoutRoute);
+app.use("/api/find", findUserRoute);
 
 app.listen(PORT, () => console.log(`Running @ http://localhost:${PORT}`));

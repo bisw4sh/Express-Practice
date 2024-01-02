@@ -1,22 +1,30 @@
 import { useContext, useEffect } from "react";
 import { userContext, AuthContextType } from "../context/AuthContext";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
   const { user, setUser } = useContext(userContext) as AuthContextType;
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const cookieUser = Cookies.get("data");
-    console.log(cookieUser);
-    const extractUsername = (response: string) => {
-      const match = response.match(/"user"\s*:\s*"([^"]+)"/);
-      return match ? match[1] : null;
-    };
+    // const cookieUser = Cookies.get("data");
+    // console.log(cookieUser);
+    // const extractUsername = (response: string) => {
+    //   const match = response.match(/"user"\s*:\s*"([^"]+)"/);
+    //   return match ? match[1] : null;
+    // };
 
-    setUser(extractUsername(cookieUser as string) as string);
+    // setUser(extractUsername(cookieUser as string) as string);
     // console.log(user)
+    async () => {
+      const user = await fetch('api/find')
+      console.log(user)
+      setUser('hello')
+    };
+    navigate("/");
   }, []);
-  
+
   return (
     <div>
       Welcome, <span className="capitalize">{user}</span>

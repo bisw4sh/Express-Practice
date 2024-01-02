@@ -12,8 +12,9 @@ router.get("/", (req, res) => {
       res.send("Session is destroyed");
     }
   });
-  res.cookie.clear;
-  res.clearCookie("data");
+  req.session.cookie.expires = new Date(Date.now());
+  // res.cookie.clear;
+  // res.clearCookie("data");
   res.send(`Cookie has been destroyed`);
 });
 
