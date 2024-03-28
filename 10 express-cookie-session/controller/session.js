@@ -16,6 +16,7 @@ export const changeSession = async (req, res) => {
   console.log(req.session.setting);
   res.send("<h1>Token Changed. Look at server console</h1>");
 };
+
 export const destroySession = async (req, res) => {
   req.session.destroy();
   console.log(req.session?.setting || "NO session");

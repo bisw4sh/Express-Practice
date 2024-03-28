@@ -7,7 +7,7 @@ import {
 } from "../controller/cookie.js";
 const router = express.Router();
 
-router.get("/set", setCookie);
+router.get("/set/:name", setCookie);
 router.get("/check", checkCookie);
 router.get("/change", changeCookie);
 router.get("/destroy", destroyCookie);

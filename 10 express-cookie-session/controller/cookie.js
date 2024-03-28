@@ -4,19 +4,19 @@ export const setCookie = async (req, res) => {
   if (req.cookies.data) {
     res.send("Cookie already exists");
   } else {
-    res.cookie("data", { token: uuidv4(), user: "Biswash" });
+    res.cookie("data", { token: uuidv4(), user: req.params.name });
     res.send("<h1>Cookie has been set</h1>");
   }
 };
 
 export const checkCookie = async (req, res) => {
   const { data } = req.cookies;
-  console.log(data);
+  console.log(data === "" ? "there was no cookie" : data);
   res.send("<h1>Check Server console to check the cookie</h1>");
 };
 
 export const changeCookie = async (req, res) => {
-  const newCookie = res.cookie("data", { token: "token has been changed" });
+  const newCookie = res.cookie("data", { token: uuidv4(), user : req.cookies.data?.name });
   console.log(newCookie);
   res.send("<h1>Token Changed. Look at server console</h1>");
 };
