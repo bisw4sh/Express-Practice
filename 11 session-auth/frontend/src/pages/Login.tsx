@@ -34,7 +34,7 @@ export default function Login() {
       user: "",
       password: "",
     });
-    navigate("/dashboard");
+    navigate("/");
   };
 
   return (
