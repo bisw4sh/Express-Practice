@@ -13,9 +13,20 @@ router.post("/", async (req, res) => {
       ({ user, password }) => user === _user && password === _password
     );
 
-    if (_password === isMatch[0].password) {
+    if (_password === isMatch[0]?.password) {
+      // session({
+      //   genid: function (req) {
+      //     return genuuid(); // use UUIDs for session IDs
+      //   },
+      //   secret: "keyboard cat",
+      // });
+
       req.session.data = _user;
-      res.cookie("data", { user: _user });
+      // res.cookie(
+      //   "data",
+      //   { user: _user },
+      //   { expires: new Date(Date.now() + 60 * 60 * 1000), httpOnly: true }
+      // );
 
       res.status(200).send(`Logged In, cookies saved`);
     } else {

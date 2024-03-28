@@ -4,14 +4,11 @@ import { useContext } from "react";
 
 export default function Navbar() {
   const { user, setUser } = useContext(userContext) as AuthContextType;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleLogOut = async () => {
-    // await fetch("/api/logout", {
-    //   credentials: "include",
-    // });
     setUser("");
-    navigate('/logout')
+    navigate("/logout");
   };
   return (
     <div className="px-8 py-4">
@@ -37,7 +34,7 @@ export default function Navbar() {
           </NavLink> */}
         </div>
         <div className="flex justify-between items-center gap-3">
-          <button className="btn capitalize">{user}</button>
+          <button className="btn capitalize">{user.slice(0, 10)}</button>
           <button className="btn">
             {!user ? (
               <NavLink to="login">Login</NavLink>

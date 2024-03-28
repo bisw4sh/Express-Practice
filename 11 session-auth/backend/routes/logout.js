@@ -14,6 +14,7 @@ router.get("/", (req, res) => {
     } else {
       // Clear the cookie
       res.clearCookie("data");
+      res.clearCookie("session_id");
       res.send("Session and cookie have been destroyed");
     }
   });

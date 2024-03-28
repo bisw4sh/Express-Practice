@@ -20,7 +20,6 @@ export default function Login() {
   const submitForm = async () => {
     await fetch("api/login", {
       method: "POST",
-      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -58,7 +57,7 @@ export default function Login() {
                 user
               </label>
               <input
-                type="text" 
+                type="text"
                 name="user"
                 className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
                 value={formData.user}
@@ -92,7 +91,7 @@ export default function Login() {
 
           <div className="flex items-center justify-center p-4">
             <p className="text-center text-sm text-gray-500">
-              Don't have an account?{" "}
+              Don't have an account? {""}
               <Link
                 to="/register"
                 className="text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700"

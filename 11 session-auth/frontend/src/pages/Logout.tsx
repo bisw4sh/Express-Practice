@@ -16,13 +16,7 @@ export default function Logout() {
   const loaderData = useLoaderData();
 
   useEffect(() => {
-    // (async () => {
-    //   const response = await fetch("/api/logout", {
-    //     credentials: "include",
-    //   });
-    //   console.log(response.text());
     localStorage.clear();
-    // })();
     console.log(loaderData);
 
     navigate("/");

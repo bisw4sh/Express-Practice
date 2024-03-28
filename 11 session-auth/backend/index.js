@@ -1,32 +1,33 @@
 import express from "express";
 import session from "express-session";
-import cookieParser from "cookie-parser";
 import loginRoute from "./routes/login.js";
 import registerRoute from "./routes/register.js";
 import logoutRoute from "./routes/logout.js";
 import findUserRoute from "./routes/findUser.js";
+import privateRoute from "./routes/private.js";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+app.set("trust proxy", 1); // trust first proxy
 
 app.use(express.json());
-app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(
   session({
+    // name: "identifier", //name of the cookie identifier/name in the client || commented out to make both same in client/server
     secret: "<secret>",
-    key: "session_id",
+    key: "session_id", //name of the session identifer in server
     resave: false,
     saveUninitialized: true,
     cookie: {
-      // secure: true,
-      maxAge: 1000 * 60 * 60 * 24 * 7,
+      secure: false,
+      httpOnly: false, // if true prevent client side JS from reading the cookie
+      maxAge: 1000 * 60 * 60 * 24, // session max age in miliseconds
     },
   })
 );
 
-app.get("/", (req, res) => {
+app.get("/", (_, res) => {
   res.send("It is working");
 });
 
@@ -35,5 +36,6 @@ app.use("/api/login", loginRoute);
 app.use("/api/register", registerRoute);
 app.use("/api/logout", logoutRoute);
 app.use("/api/find", findUserRoute);
+app.use("/api/private", privateRoute);
 
 app.listen(PORT, () => console.log(`Running @ http://localhost:${PORT}`));

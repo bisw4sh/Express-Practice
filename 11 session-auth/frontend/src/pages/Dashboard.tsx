@@ -1,22 +1,11 @@
 import { useContext, useEffect } from "react";
 import { userContext, AuthContextType } from "../context/AuthContext";
-// import Cookies from "js-cookie";
-// import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Dashboard() {
   const { user, setUser } = useContext(userContext) as AuthContextType;
-  // const navigate = useNavigate();
 
   useEffect(() => {
-    // const cookieUser = Cookies.get("data");
-    // console.log(cookieUser);
-    // const extractUsername = (response: string) => {
-    //   const match = response.match(/"user"\s*:\s*"([^"]+)"/);
-    //   return match ? match[1] : null;
-    // };
-
-    // setUser(extractUsername(cookieUser as string) as string);
-    // console.log(user)
     (async () => {
       try {
         const userFetched = await fetch("api/find", {
@@ -30,12 +19,14 @@ export default function Dashboard() {
         console.error("Error fetching user:", error);
       }
     })();
-    // navigate("/");
   }, []);
 
   return (
-    <div>
+    <div className="h-screen flex flex-col justify-center items-center ">
       Welcome, <span className="capitalize">{user}</span>
+      <div className="bg-teal-500 text-black px-3 py-2 rounded-lg">
+        <Link to="/private">Private</Link>
+      </div>
     </div>
   );
 }

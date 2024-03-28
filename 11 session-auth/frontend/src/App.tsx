@@ -11,6 +11,7 @@ import Dashboard from "./pages/Dashboard";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Logout, { loader as logoutLoader} from "./pages/Logout";
+import Private, { loader as privateLoader} from "./pages/Private";
 import Register from "./pages/Register";
 
 const router = createBrowserRouter(
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
       <Route path="login" element={<Login />} />
       <Route path="logout" element={<Logout />} loader={logoutLoader} />
       <Route path="register" element={<Register />} />
+      <Route path="private" element={<Private  />}  loader={privateLoader}/>
     </Route>
   )
 );
