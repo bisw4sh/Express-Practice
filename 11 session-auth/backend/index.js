@@ -5,6 +5,7 @@ import registerRoute from "./routes/register.js";
 import logoutRoute from "./routes/logout.js";
 import findUserRoute from "./routes/findUser.js";
 import privateRoute from "./routes/private.js";
+import MongoStore from "connect-mongo";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -15,6 +16,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
     // name: "identifier", //name of the cookie identifier/name in the client || commented out to make both same in client/server
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URI,
+      // dbName: "sessions-db",
+      collectionName: "sessions-collection",
+    }),
     secret: "<secret>",
     key: "session_id", //name of the session identifer in server
     resave: false,

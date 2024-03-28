@@ -5,17 +5,18 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-
     console.log("--------------------------------------------");
-    console.table(req.session);
-    console.table(req.session['data']);
-    console.log(req.cookies);
-    console.log(`Session Data : ${req.session['data']}`);
-    console.log(`Session ID : ${req.sessionID}`);
+    // console.table(req.session);
+    // console.log(req.session["data"]); //undefined
+    // console.log(req.cookies); //undefined
+    console.log(req.cookies.session_id); //undefined
+    // console.log(`Session Data : ${req.session["data"]}`); //undefined
+    console.log(`Session ID : ${req.sessionID}`); //this shows
     console.log("--------------------------------------------");
-
-    res.send(req.session.data);
+    // let retVal = req.session["data"] ? req.session["data"] : "anon";
+    res.send("no idea");
   } catch (error) {
+    console.log("There must have been error here");
     res.status(500).send(error);
   }
 });
