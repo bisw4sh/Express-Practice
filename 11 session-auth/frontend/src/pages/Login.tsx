@@ -18,13 +18,29 @@ export default function Login() {
   };
 
   const submitForm = async () => {
-    await fetch("api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await fetch("api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to login");
+      }
+
+      const responseData = await response.text();
+
+      if (responseData === "success") {
+        navigate("/");
+      } else {
+        throw new Error("Login failed");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -34,7 +50,7 @@ export default function Login() {
       user: "",
       password: "",
     });
-    navigate("/");
+    // navigate("/");
   };
 
   return (

@@ -14,26 +14,13 @@ router.post("/", async (req, res) => {
     );
 
     if (_password === isMatch[0]?.password) {
-      // session({
-      //   genid: function (req) {
-      //     return genuuid(); // use UUIDs for session IDs
-      //   },
-      //   secret: "keyboard cat",
-      // });
-
       req.session.data = _user;
-      // res.cookie(
-      //   "data",
-      //   { user: _user },
-      //   { expires: new Date(Date.now() + 60 * 60 * 1000), httpOnly: true }
-      // );
-
-      res.status(200).send(`Logged In, cookies saved`);
+      res.status(200).send("success");
     } else {
-      res.status(401).send(`Invalid password for ${_user}`);
+      res.status(401).send("error");
     }
   } else {
-    res.status(401).send(`${_user} doesn't exist`);
+    res.status(401).send("error");
   }
 });
 
