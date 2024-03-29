@@ -37,7 +37,6 @@ app.get("/", (_, res) => {
   res.send("It is working");
 });
 
-// app.use("/api/login", active_sessions, loginRoute);
 app.use("/api/login", loginRoute);
 app.use("/api/register", registerRoute);
 app.use("/api/logout", logoutRoute);
