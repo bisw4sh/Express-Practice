@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
       res.status(500).send("Error destroying session");
     } else {
       // Clear the cookie
-      res.clearCookie("data");
+      // res.clearCookie("data");
       res.clearCookie("session_id");
       res.send("Session and cookie have been destroyed");
     }

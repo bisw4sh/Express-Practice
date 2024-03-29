@@ -4,11 +4,11 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     console.log("--------------------------------------------");
-    // console.table(req.session);
-    // console.log(req.session?.data); //undefined
-    // console.log(req.cookies); //undefined
-    // console.log(req.cookies.session_id); //undefined
-    console.log(`Session ID : ${req.sessionID}`); //this shows
+    console.table(req?.session);
+    console.log(req.session?.data);
+    console.log(req?.cookies); //undefined
+    console.log(req?.cookies?.session_id); //undefined
+    console.log(`Session ID : ${req.sessionID}`);
     console.log("--------------------------------------------");
     res.send(req.session?.data);
   } catch (error) {

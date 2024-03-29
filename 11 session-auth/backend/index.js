@@ -6,12 +6,14 @@ import logoutRoute from "./routes/logout.js";
 import findUserRoute from "./routes/findUser.js";
 import privateRoute from "./routes/private.js";
 import MongoStore from "connect-mongo";
+import CookieParser from "cookie-parser";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 app.set("trust proxy", 1); // trust first proxy
 
 app.use(express.json());
+app.use(CookieParser("<secret>"));
 app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
