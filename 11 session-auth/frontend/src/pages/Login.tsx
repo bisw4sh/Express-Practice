@@ -34,7 +34,7 @@ export default function Login() {
       const responseData = await response.text();
 
       if (responseData === "success") {
-        navigate("/");
+        navigate("/dashboard");
       } else {
         throw new Error("Login failed");
       }
