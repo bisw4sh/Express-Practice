@@ -1,0 +1,29 @@
+{
+  "name": "prisma-drop-seed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.ts",
+  "type": "module",
+  "scripts": {
+    "start": "pnpm tsx server.ts",
+    "dev": "nodemon --exec \"pnpm tsx server.ts\"",
+    "seed": "pnpm tsx ./setup/seed-script.ts",
+    "drop": "pnpm tsx ./setup/drop-data.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "5.12.1",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.7",
+    "dotenv": "^16.4.5",
+    "nodemon": "^3.1.0",
+    "prisma": "^5.12.1",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.5"
+  }
+}

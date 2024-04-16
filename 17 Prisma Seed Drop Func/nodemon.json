@@ -1,0 +1,7 @@
+{
+  "watch": ["./"],
+  "ext": ".ts",
+  "ignore": [],
+  "exec": "pnpm tsx server.ts",
+  "recursive": true
+}

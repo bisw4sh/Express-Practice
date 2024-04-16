@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Student {
+  symbol_num Int        @id @unique
+  name       String
+  roll_no    Int
+  age        Int?
+  interest   String[]
+  sem        Semester[]
+}
+
+model Semester {
+  ident      Int      @id @default(autoincrement())
+  year       DateTime @default(now())
+  std_symbol_num Int
+  sem_num    Int
+  sem        semType
+  subjects   String[]
+  credit_hrs Int
+  CGPA       Float
+  student    Student  @relation(fields: [std_symbol_num], references: [symbol_num], onDelete: Cascade, onUpdate: Cascade)
+}
+
+enum semType {
+  SPRING
+  FALL
+}
