@@ -1,0 +1,1 @@
+Authentication - JWT can contain user information in the payload and can be used in the session to authenticate the user. Once authenticated, users can access protected resources in an application using the JWT included in the request. So, every request will be authenticated by verifying the JWT.
