@@ -34,14 +34,14 @@ const verification = async (
         }) as JwtPayload;
 
         //Access Token expired
-        await token_restoration(req, res);
+        await token_restoration(req, res, next);
 
         return next();
       } catch (refresh_error) {
         if (refresh_error instanceof jwt.TokenExpiredError) {
           //Both Tokens expired
 
-          await token_restoration(req, res);
+          await token_restoration(req, res, next);
 
           return next();
         } else if (

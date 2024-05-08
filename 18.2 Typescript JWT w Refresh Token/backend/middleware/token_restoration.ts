@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { RefreshTokens } from "../models/RefreshTokens";
 import { generate_jwt } from "../controllers/generateJWT";
@@ -7,7 +7,7 @@ import { append_tokens } from "../controllers/get_recorder";
 const ACCESS_TOKEN_TIME = 10;
 const REFRESH_TOKEN_TIME = 20;
 
-export const token_restoration = async (req: Request, res: Response) => {
+export const token_restoration = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const refresh_token = await RefreshTokens.findOne({
       token: req.cookies.refresh_token,
@@ -40,10 +40,10 @@ export const token_restoration = async (req: Request, res: Response) => {
     res
       .cookie("jwt_string", NEW_ACCESS_TOKEN)
       .cookie("refresh_token", NEW_REFRESH_TOKEN);
-    return;
+    return next();
   } catch (error) {
     console.error("Error regenerating tokens:", error.message);
     res.status(500).json({ error: "Failed to regenerate tokens" });
-    return;
+    // return;
   }
 };
