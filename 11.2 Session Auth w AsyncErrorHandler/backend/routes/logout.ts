@@ -1,0 +1,24 @@
+import express, { Response, Request } from "express";
+
+const router = express.Router();
+
+router.get("/", (req: Request, res: Response) => {
+  console.table(req.cookies);
+  console.log(req.session.user);
+
+  // Destroy the session
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send("Error destroying session");
+    } else {
+      // Clear the cookie
+      // res.clearCookie("data");
+      res.clearCookie("session_id");
+      res.clearCookie("user");
+      res.send("Session and cookie have been destroyed");
+    }
+  });
+});
+
+export default router;

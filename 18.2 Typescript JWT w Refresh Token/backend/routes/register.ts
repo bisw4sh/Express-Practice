@@ -21,7 +21,9 @@ router.post("/", async (req: Request, res: Response) => {
       res.json({ user, message: "User exists" });
     } else {
       const salt = await bcrypt.genSalt(salt_rounds as number);
+      console.log(salt);
       const hash_password = await bcrypt.hash(password, salt);
+      console.log(hash_password);
       const user_to_db = await Users.create({
         username: user,
         password: hash_password,
