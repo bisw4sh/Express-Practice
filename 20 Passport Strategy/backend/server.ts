@@ -1,16 +1,24 @@
 import express, { Request, Response, NextFunction } from "express";
 import CookieParser from "cookie-parser";
 import "dotenv/config";
+import session from "express-session";
+import MongoStore from "connect-mongo";
+import passport from "passport";
+
 import loginRoute from "./routes/login.js";
 import registerRoute from "./routes/register.js";
 import logoutRoute from "./routes/logout.js";
 import dashboardRoute from "./routes/dashboard.js";
 import privateRoute from "./routes/private.js";
-import session from "express-session";
-import MongoStore from "connect-mongo";
-import "colors";
 import { dbcn } from "./db/connection.js";
 import { AppError, errorHandler } from "./middleware/error.js";
+import "./passport-config.js";
+import "colors";
+import {
+  checkAuthenticated,
+  checkNotAuthenticated,
+  checkAuthorized,
+} from "./controllers/check.controller.js";
 
 type User = string;
 declare module "express-session" {
@@ -32,9 +40,6 @@ declare global {
       message?: string;
     }
   }
-}
-
-declare global {
   namespace Express {
     interface Response {
       user?: User | null;
@@ -44,18 +49,13 @@ declare global {
   }
 }
 
-process.on("unhandledRejection", (err: Error) => {
-  console.log(err.name, err.message);
-  process.exit(1);
-});
-
 const app = express();
 const PORT = process.env.PORT || 8080;
 app.set("trust proxy", 1); // trust first proxy
 
 dbcn();
 app.use(express.json());
-app.use(CookieParser("<secret>"));
+app.use(CookieParser("cbmelion")); //doesn't essentially need this pkg as express-session does its own
 app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
@@ -77,11 +77,14 @@ app.use(
   })
 );
 
-app.use("/api/login", loginRoute);
-app.use("/api/register", registerRoute);
-app.use("/api/logout", logoutRoute);
-app.use("/api/dashboard", dashboardRoute);
-app.use("/api/private", privateRoute);
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use("/api/login", checkNotAuthenticated, loginRoute);
+app.use("/api/register", checkNotAuthenticated, registerRoute);
+app.use("/api/logout", checkAuthenticated, logoutRoute);
+app.use("/api/dashboard", checkAuthenticated, dashboardRoute);
+app.use("/api/private", checkAuthenticated, checkAuthorized, privateRoute);
 
 app.all("*", (req: Request, res: Response, next: NextFunction) => {
   const error = new AppError(
@@ -93,6 +96,6 @@ app.all("*", (req: Request, res: Response, next: NextFunction) => {
 });
 app.use(errorHandler);
 
-const server = app.listen(PORT, () =>
-  console.log(`Running @ http://localhost:${PORT}`)
+app.listen(PORT, () =>
+  console.log("Running @ ", `http://localhost:${PORT}`.cyan)
 );
