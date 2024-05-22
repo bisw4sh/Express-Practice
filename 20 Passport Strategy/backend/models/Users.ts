@@ -18,3 +18,14 @@ const User = new Schema(
 );
 
 export const Users = mongoose.model("Users", User);
+
+// export interface UserDocRet {
+//   _id: Schema.Types.ObjectId;
+//   id: string;
+//   username: string;
+//   password: string;
+//   role: string;
+//   createdAt: Date;
+//   updatedAt: Date;
+//   __v: number;
+// }

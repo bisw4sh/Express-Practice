@@ -1,34 +1,36 @@
 import express, { Response, Request, NextFunction } from "express";
 import { AppError } from "../middleware/error";
+import "colors";
 
 const router = express.Router();
 
 router.get("/", (req: Request, res: Response, next: NextFunction) => {
-  console.table(req.cookies);
-  console.log(req.session.user);
+  // console.table(req.cookies);
 
-  req.logOut((err) => {
+  req.logout((err) => {
     if (err) {
       const err = new AppError("Kaya malum", 500);
       return next(err);
     }
-
-    console.log("Ho gaya ");
+    //Checking if session has been destroyed
+    console.table(req.session);
+    return res.status(205).send("Logged out");
   });
 
   // Destroy the session
-  req.session.destroy((err) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send("Error destroying session");
-    } else {
-      // Clear the cookie
-      // res.clearCookie("data");
-      res.clearCookie("session_id");
-      res.clearCookie("user");
-      res.send("Session and cookie have been destroyed");
-    }
-  });
+  // req.session.destroy((err) => {
+  //   console.log("here tiooo");
+  //   if (err) {
+  //     console.log(err);
+  //     res.status(500).send("Error destroying session");
+  //   } else {
+  //     console.log("Successful session destruction");
+  //     // Clear the cookie
+  //     // res.clearCookie("data");
+  //     // res.clearCookie("user");
+  //     res.send("Session and cookie have been destroyed");
+  //   }
+  // });
 });
 
 export default router;

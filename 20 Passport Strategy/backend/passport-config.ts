@@ -1,6 +1,5 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
-import { Users } from "./models/Users";
 import { userExists, verifyPassword } from "./controllers/login.controller";
 
 export default passport.use(
@@ -29,13 +28,16 @@ export default passport.use(
 );
 
 passport.serializeUser((user, done) => {
-  done(null, user);
+  process.nextTick(function () {
+    done(null, { username: user.username, id: user.id, role: user.role });
+  });
 });
 
-passport.deserializeUser(async (id, done) => {
+passport.deserializeUser(async (user: Express.User, done) => {
   try {
-    const user = await Users.findById({ id });
-    done(null, user);
+    process.nextTick(function () {
+      return done(null, user);
+    });
   } catch (err) {
     done(err);
   }

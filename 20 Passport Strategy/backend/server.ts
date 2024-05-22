@@ -20,31 +20,30 @@ import {
   checkAuthorized,
 } from "./controllers/check.controller.js";
 
-type User = string;
 declare module "express-session" {
-  interface SessionData {
-    user: User;
-    role: string;
-  }
-
-  interface Cookie {
-    user: User;
+  interface Session {
+    passport?: {
+      user?: {
+        username?: string;
+        role?: "admin" | "user";
+        id?: "string";
+      };
+    };
   }
 }
 
 declare global {
-  namespace Types {
-    interface ReturnMsg {
-      user?: User | null;
+  namespace Express {
+    interface Response {
+      string?: string | null;
       success?: boolean;
       message?: string;
     }
-  }
-  namespace Express {
-    interface Response {
-      user?: User | null;
-      success?: boolean;
-      message?: string;
+
+    interface User {
+      username?: string;
+      role?: string;
+      id?: string;
     }
   }
 }

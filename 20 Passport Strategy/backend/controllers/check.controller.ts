@@ -6,11 +6,10 @@ export const checkAuthenticated = (
   next: NextFunction
 ) => {
   if (req.isAuthenticated()) {
-    console.log(req.session.role);
     return next();
   }
 
-  res.json({
+  res.status(401).json({
     message: "You're not authenticated",
     success: false,
   });
@@ -22,7 +21,7 @@ export const checkNotAuthenticated = (
   next: NextFunction
 ) => {
   if (req.isAuthenticated()) {
-    return res.json({
+    return res.status(400).json({
       message: "You're already authenticated",
       success: false,
     });
@@ -35,11 +34,10 @@ export const checkAuthorized = (
   res: Response,
   next: NextFunction
 ) => {
-  console.log("checked authorization");
-  if (req?.session?.role === "admin") {
+  if (req?.session?.passport?.user?.role === "admin") {
     return next();
   }
-  return res.json({
+  return res.status(403).json({
     message: "You're not authorized",
     success: false,
   });
