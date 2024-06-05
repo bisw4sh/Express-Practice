@@ -1,0 +1,38 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+#code runner file
+tempCodeRunnerFile.js
+.env
+# Ignore all files inside the uploads directory
+backend/uploads/*
+# But don't ignore the uploads directory itself
+!backend/uploads/
+# Also ignore all files inside the thumbnails subdirectory
+backend/uploads/thumbnails/*
+# But don't ignore the thumbnails subdirectory itself
+!backend/uploads/thumbnails/
+# Ignore all .gitkeep files
+**/.gitkeep
