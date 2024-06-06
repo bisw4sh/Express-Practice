@@ -35,4 +35,4 @@ backend/uploads/thumbnails/*
 # But don't ignore the thumbnails subdirectory itself
 !backend/uploads/thumbnails/
 # Ignore all .gitkeep files
-**/.gitkeep
+!.gitkeep
