@@ -13,8 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 // Example Route
 app.get("/api/quiz/:fileName", async (req: Request, res: Response) => {
   const { fileName } = req.params;
-  const return_text = await run(fileName);
-  res.json(return_text);
+  const parsed_mcqs = await run(fileName);
+  res.json(parsed_mcqs);
 });
 
 // Start Server

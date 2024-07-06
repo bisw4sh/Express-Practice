@@ -1,0 +1,82 @@
+[
+  {
+    "question": "What is the main purpose of web development?",
+    "options": [
+      "Creating and maintaining websites and web applications",
+      "Developing software for mobile devices",
+      "Designing user interfaces for desktop applications",
+      "Managing databases and server infrastructure"
+    ],
+    "correct_answer": "Creating and maintaining websites and web applications"
+  },
+  {
+    "question": "Which of the following is NOT a component of web development?",
+    "options": [
+      "Front-end development",
+      "Back-end development",
+      "Full-stack development",
+      "Data mining"
+    ],
+    "correct_answer": "Data mining"
+  },
+  {
+    "question": "Which language is used to create the structure of a web page?",
+    "options": ["CSS", "JavaScript", "HTML", "Python"],
+    "correct_answer": "HTML"
+  },
+  {
+    "question": "What is the role of a back-end developer in web development?",
+    "options": [
+      "Designing the visual appearance of the website",
+      "Writing code for server-side logic and database interactions",
+      "Creating interactive elements for the user interface",
+      "Testing and debugging the website"
+    ],
+    "correct_answer": "Writing code for server-side logic and database interactions"
+  },
+  {
+    "question": "Which of the following is a modern trend in web development?",
+    "options": [
+      "Static web pages",
+      "Responsive design",
+      "Flash animations",
+      "Cascading style sheets"
+    ],
+    "correct_answer": "Responsive design"
+  },
+  {
+    "question": "What is a challenge faced by web developers in terms of security?",
+    "options": [
+      "Slow internet connections",
+      "Limited browser compatibility",
+      "Protecting websites from data breaches",
+      "Lack of design tools"
+    ],
+    "correct_answer": "Protecting websites from data breaches"
+  },
+  {
+    "question": "Which of the following is NOT a stage in the web development process?",
+    "options": ["Planning", "Design", "Development", "Marketing"],
+    "correct_answer": "Marketing"
+  },
+  {
+    "question": "What does the term \"full-stack development\" refer to?",
+    "options": [
+      "Developing only the front-end of a website",
+      "Developing only the back-end of a website",
+      "Developing both the front-end and back-end of a website",
+      "Managing the server infrastructure of a website"
+    ],
+    "correct_answer": "Developing both the front-end and back-end of a website"
+  },
+  {
+    "question": "Which technology enables web applications to provide a native app-like experience?",
+    "options": [
+      "Single Page Applications (SPAs)",
+      "Progressive Web Apps (PWAs)",
+      "Serverless Architecture",
+      "APIs and Microservices"
+    ],
+    "correct_answer": "Progressive Web Apps (PWAs)"
+  }
+]
