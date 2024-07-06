@@ -8,38 +8,6 @@ import {
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
 
-interface SafetyRating {
-  category: string;
-  probability: string;
-}
-
-interface Part {
-  text: string;
-}
-
-interface Content {
-  parts: Part[];
-  role: string;
-}
-
-interface Candidate {
-  content: Content;
-  finishReason: string;
-  index: number;
-  safetyRatings: SafetyRating[];
-}
-
-interface UsageMetadata {
-  promptTokenCount: number;
-  candidatesTokenCount: number;
-  totalTokenCount: number;
-}
-
-interface ApiResponse {
-  candidates: Candidate[];
-  usageMetadata: UsageMetadata;
-}
-
 interface MCQ {
   question: string;
   options: string[];
@@ -55,19 +23,8 @@ export const loader = async ({
   params,
 }: LoaderFunctionArgs): Promise<MCQ[]> => {
   const response = await fetch("/api/quiz/" + params.fileName);
-  const data: ApiResponse = await response.json();
-
-  const dataText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-  const jsonString = dataText?.replace(/```json\n|```/g, "");
-
-  let dataObj: MCQ[] = [];
-  try {
-    dataObj = JSON.parse(jsonString);
-  } catch (error) {
-    console.error("Failed to parse JSON:", error);
-  }
-
-  return dataObj;
+  const data: MCQ[] = await response.json();
+  return data;
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
